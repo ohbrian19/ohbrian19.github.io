@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Brian Oh Software Engineer Journey"
+title                    : "Software Engineer Journey"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Brian Oh"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Brian Oh"
   avatar           : "/assets/images/profile.jpeg"
-  bio              : "I am a **amazing** software engineer."
+  bio              : "I am an **amazing** software engineer."
   location         : "New York, NY"
   email            : "ohbrian12@gmail.com"
   links:
