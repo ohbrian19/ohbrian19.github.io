@@ -44,10 +44,18 @@ sum('10', '20'); // Error: Argument of type 'string' is not assignable to parame
 	- `let num: any = 10;`
 	- `let arr: any = ['a', 2, true];`
 - **Void**
+	- In variable, allow only *undefined* and *null*.
+	- In function, void does not return anything.
+```
+let unuseful: void = undefined;
+function notuse(): void {
+  console.log('sth');
+}
+```
 - **Never**
 
 
-### Function Types
+### Function
 
 How to declare basic types in functions.
 ```
@@ -73,8 +81,52 @@ sum(10, 20); // 30
 sum(10, 20, 30); // error, too many parameters
 sum(10); // 10
 ```
-- Optional parameter (?)
+- Optional parameter
 
+### Interface
+In **TypeScript**, an **interface** is an abstract type that tells the compiler which property names a given object can have.
+
+For example,
+```
+let person = { name: 'Capt', age: 28 };
+
+function logAge(obj: { age: number }) {
+  console.log(obj.age); // 28
+}
+logAge(person); // 28
+```
+can be changed to 
+```
+interface personAge {
+  age: number;
+}
+
+function logAge(obj: personAge) {
+  console.log(obj.age);
+}
+let person = { name: 'Capt', age: 28 };
+logAge(person);
+```
+
+ 1. **Optional Property**
+- When using the interface, using all declared properties is not necessary. This is called optional property.
+```
+interface CraftBeer {
+  name: string;
+  hop?: number;  
+}
+
+let myBeer = {
+  name: 'Saporo'
+};
+function brewBeer(beer: CraftBeer) {
+  console.log(beer.name); // Saporo
+}
+brewBeer(myBeer);
+```
+- Interfaces with optional properties are written similar to other interfaces, with each optional property denoted by a "**?**" at the end of the property name in the declaration.
+
+ 2. **Readonly Property**
 
 ## Other tips
 
@@ -83,3 +135,4 @@ sum(10); // 10
 	 - `tsc filename.ts`
 	 - create `tsconfig.json` to set configuration details
 		 - https://www.typescriptlang.org/tsconfig
+
