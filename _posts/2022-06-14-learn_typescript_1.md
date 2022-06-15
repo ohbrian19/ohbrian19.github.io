@@ -1,9 +1,10 @@
+
 ---
 layout: post
 title:  "Learn TypeScript #1 2022-06-14"
 ---
 
-This is my journey to learn **TypeScript**.
+This is my journey to learn **TypeScript** part 1.
 
 I decided to learn **TypeScript** to make my code more stable and to add static typing to JavaScript. Static typing means that the type of a variable cannot be changed at any point in a program.
 
@@ -83,6 +84,76 @@ sum(10); // 10
 ```
 - Optional parameter
 
+
+### Union Type
+
+- TypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type.
+```
+function logText(text: string | number) {
+  // ...
+}
+```
+- Pros of using Union Type
+```
+// Using any
+function getAge(age: any) {
+  age.toFixed(); // ERROR
+  return age;
+}
+
+// Using union type
+function getAge(age: number | string) {
+  if (typeof age === 'number') {
+    age.toFixed();
+    return age;
+  }
+  if (typeof age === 'string') {
+    return age;
+  }
+  return new TypeError('age must be number or string');
+}
+```
+- **Intersection Type**
+	- An intersection type is a type that merges several kinds into one.
+```
+interface Person {
+  name: string;
+  age: number;
+}
+interface Developer {
+  name: string;
+  skill: number;
+}
+type Capt = Person & Developer;
+```
+
+### Type Aliases
+
+- Type aliases create a new name for a type. Type aliases are sometimes similar to interfaces, but can name primitives, unions, tuples, and any other types that you’d otherwise have to write by hand.
+```
+// Using string type
+const name: string = 'brian';
+
+// Using type aliases
+type MyName = string;
+const name: MyName = 'brian';
+```
+```
+type Developer = {
+  name: string;
+  skill: string;
+}
+```
+```
+type User<T> = {
+  name: T
+}
+```
+- Difference between *Type* and *Interface*
+	- *Interfaces* are basically a way to describe data shapes, for example, an object. 
+	- *Type* is a definition of a type of data, for example, a union, primitive, intersection, tuple, or any other type.
+	- *Interface* allows inheritance, but *Type* does not
+
 ## Other tips
 
  1. How to compile ts file to js
@@ -90,4 +161,3 @@ sum(10); // 10
 	 - `tsc filename.ts`
 	 - create `tsconfig.json` to set configuration details
 		 - https://www.typescriptlang.org/tsconfig
-
