@@ -10,6 +10,7 @@ This is my journey to learn **TypeScript** part 2.
 In **TypeScript**, an **interface** is an abstract type that tells the compiler which property names a given object can have.
 
 For example,
+
 ```
 let person = { name: 'Capt', age: 28 };
 
@@ -18,7 +19,9 @@ function logAge(obj: { age: number }) {
 }
 logAge(person); // 28
 ```
+
 can be changed to 
+
 ```
 interface personAge {
   age: number;
@@ -33,6 +36,7 @@ logAge(person);
 
  1. **Optional Property**
 - When using the interface, using all declared properties is not necessary. This is called optional property.
+
 ```
 interface CraftBeer {
   name: string;
@@ -47,16 +51,19 @@ function brewBeer(beer: CraftBeer) {
 }
 brewBeer(myBeer);
 ```
+
 - Interfaces with optional properties are written similar to other interfaces, with each optional property denoted by a "**?**" at the end of the property name in the declaration.
 
  2. **Readonly Property**
 - **TypeScript** includes the _readonly_ keyword that makes a property as read-only in the class, type or interface.
 - Read-only members can be accessed outside the class, but their value cannot be changed. Since read-only members cannot be changed outside the class, they either need to be initialized at declaration or initialized inside the class constructor.
+
 ```
 interface CraftBeer {
   readonly brand: string;
 }
 ```
+
 ```
 let myBeer: CraftBeer = {
   brand: 'Belgian Monk'
@@ -64,7 +71,8 @@ let myBeer: CraftBeer = {
 myBeer.brand = 'Korean Carpenter'; // error!
 ```
 
- 3. **Function Type**
+ 3. **Function Type**
+
 ```
 let loginUser: login;
 loginUser = function(id: string, pw: string) {
@@ -74,6 +82,7 @@ loginUser = function(id: string, pw: string) {
 ```
 
 4. **Class Type**
+
 ```
 interface CraftBeer {
   beerName: string;
@@ -90,6 +99,7 @@ class myBeer implements CraftBeer {
 ```
 
 5. **Interface inheritance**
+
 ```
 interface Person {
   name: string;
@@ -102,9 +112,9 @@ fe.name = 'josh';
 fe.skill = 'TypeScript';
 ```
 
-
 ### Usage
 1. **Indexing**
+
 ```
 interface StringArray {
   [index: number]: string;
@@ -113,6 +123,7 @@ interface StringArray {
 const arr: StringArray = ['Thor', 'Hulk'];
 arr[0]; // 'Thor'
 ```
+
 ```
 interface ReadonlyStringArray {
   readonly [index: number]: string;
@@ -123,6 +134,7 @@ arr[2] = 'Capt'; // Error!
 ```
 
 2.  **Dictionary Pattern**
+
 ```
 interface StringRegexDictionary {
   [key: string]: RegExp;
@@ -138,6 +150,7 @@ var obj: StringRegexDictionary = {
 *Enums* or enumerations are a new data type supported in **TypeScript**. *Enums* allow us to declare a set of named constants i.e. a collection of related values that can be numeric or string values. There are three types of *enums*.
 
 *1. Numeric enum*
+
 ```
 enum Direction {
   Up = 1,
@@ -150,6 +163,7 @@ enum Direction {
 - It is incremented by 1 going downwards.
 
 *2. String enum*
+
 ```
 enum Direction {
     Up = "UP",
@@ -158,7 +172,9 @@ enum Direction {
     Right = "RIGHT",
 }
 ```
+
 *3. Heterogeneous enum*
+
 ```
 enum BooleanLikeHeterogeneousEnum {
     No = 0,
@@ -169,6 +185,7 @@ enum BooleanLikeHeterogeneousEnum {
 ### Class
 
 - *readonly*
+
 ```
 class Developer {
     readonly name: string;
@@ -179,8 +196,10 @@ class Developer {
 let john = new Developer("John");
 john.name = "John"; // error! name is readonly.
 ```
+
 - **Abstract class**
 Abstract classes are mainly for inheritance where other classes may derive from them. We cannot create an instance of an abstract class.
+
 ```
 abstract class Developer {
   abstract coding(): void; // 'abstract'가 붙으면 상속 받은 클래스에서 무조건 구현해야 함
