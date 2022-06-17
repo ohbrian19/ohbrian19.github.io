@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Learn TypeScript #1 2022-06-14"
